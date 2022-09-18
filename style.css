@@ -1,0 +1,12 @@
+img {
+}
+
+.wrapper {
+    width: 150px;
+    padding: -50px;
+    margin-top: -50px;
+}
+
+#weather-info {
+    display: flex;
+}
