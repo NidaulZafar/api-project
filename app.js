@@ -100,15 +100,20 @@ const queryNasa = async () => {
     const resp = await fetch(urlNASA);
     const data = await resp.json()
     console.log(data);
-const searchResultsNASA = document.querySelector('#nasa-search-results')
-    for (let i = 0; i < 10; i++) {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        li.appendChild(a)
-        searchResultsNASA.appendChild(li);
-        a.innerHTML = JSON.stringify(`${data.collection.items[i]['data'][0].title}`);
-        a.href = `${data.collection.items[i]['links'][0].href}`;
-    }
+    const searchResultsNASA = document.querySelector('#nasa-search-results')
+    searchResultsNASA.textContent = '';
+    for (let i = 0; i < 9; i++) {
+    searchResultsNASA.innerHTML += `
+        <article>
+      <div>
+      <img class='imgsNASA' src='${data.collection.items[i]['links'][0].href}'>
+      </div>
+      <div>
+      <h3>Title: ${data.collection.items[i]['data'][0].title}</h3>
+      <p>Date: ${data.collection.items[i]['data'][0]['date_created']}</p>
+      </div>
+    </article>
+    `}
 }
 
 

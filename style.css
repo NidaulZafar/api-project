@@ -16,20 +16,38 @@ h1, h2 {
 }
 
 
-.wrapper {
-    width: 150px;
-    padding: -50px;
-    margin-top: -50px;
+#weather-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #temperature {
     cursor: alias;
 }
 
-
-#weather-info {
-    display: flex;
+.wrapper {
+    width: 150px;
+    padding: -50px;
+    margin-top: -50px;
 }
+
+
+.nasa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid yellow;
+}
+.item {
+    /* flex-grow: 1; */
+    border: 5px solid green;
+}
+
+.break {
+    flex-basis: 100%;
+    border: 5px solid purple;
+  }
 
 .hidden {
     display: none;
@@ -44,7 +62,18 @@ img {
     align-content: center;
 }
 
-ul {
-    list-style-type: none;
+#nasa-search-results {
     display: flex;
+    flex-wrap: wrap;
+    max-width: 60vw;
+    border: 2px solid red;
+    /* align-items: center;
+    justify-content: center; */
+    
+}
+
+
+.imgsNASA {
+    width: 10vw;
+    height: 25vh;
 }
