@@ -8,16 +8,48 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1 id="location"></h1>
-      <div id="weather-info">
-        <h2 id="temperature"></h2>
-        <div class="wrapper">
-          <img id="icon" />
+    <div class="content">
+      <header>
+        <h1 id="location"></h1>
+        <div id="weather-info">
+          <h2 id="temperature"></h2>
+          <div class="wrapper">
+            <img id="icon" />
+          </div>
+          <h3 id="description"></h3>
         </div>
-        <h3 id="description"></h3>
-      </div>
-    </header>
+      </header>
+      <main>
+        <div class="nasa">
+          <h1 class="picture">What do you think about Astronomy?</h1>
+          <button id="yes">I love it!</button>
+          <button id="no">It's Boring!</button>
+          <div class="reaction"></div>
+          <div class="nasa-data">
+            <img id="apod" src="" alt="" />
+            <div class="explanation">
+              <!-- <button type="button" id="button">Get Data</button> -->
+              <input type="checkbox" id="option" name="option" />
+              <label for="option">Show Explanation</label>
+            </div>
+            <p class="explanation-p"></p>
+          </div>
+        </div>
+        <div class="nasa-images">
+          <h2>Let's search NASA's database</h2>
+          <div class="search-box">
+            <input
+              type="text"
+              class="search-query"
+              placeholder="Enter your astronomical query..."
+              id="search-input"
+            />
+            <button type="submit" class="" id="search-btn">search</button>
+          </div>
+          <ul id="nasa-search-results"></ul>
+        </div>
+      </main>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>

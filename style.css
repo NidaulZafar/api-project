@@ -1,5 +1,20 @@
-img {
+* {
+    margin: 0;
+    padding: 0;
 }
+
+.content {
+    max-width: 60vw;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    background-color: brown;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
 
 .wrapper {
     width: 150px;
@@ -7,6 +22,29 @@ img {
     margin-top: -50px;
 }
 
+#temperature {
+    cursor: alias;
+}
+
+
 #weather-info {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
+
+img {
+    max-width: 50vw;
+}
+
+.nasa-data {
+    align-items: center;
+    align-content: center;
+}
+
+ul {
+    list-style-type: none;
     display: flex;
 }
