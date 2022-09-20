@@ -29,27 +29,7 @@ window.addEventListener('load', () => {
             })
             console.log(data.weather[0].main)
             const weatherCondition = data.weather[0].main;
-            switch (weatherCondition) {
-                case 'Clouds':
-                    icon.src = './assets/cloudy.svg';
-                  break;
-                case 'Thunderstorm':
-                    icon.src = './assets/thunderstorms.svg';
-                  break;
-                case 'Drizzle':
-                    icon.src = './assets/drizzle.svg';
-                  break;
-                case 'Rain':
-                    icon.src = './assets/rain.svg';
-                  break;
-                case 'Snow':
-                    icon.src = './assets/snow.svg';
-                  break;
-                case 'Clear':
-                    default:
-                    icon.src = './assets/clear-day.svg';
-                  break;
-                }
+            icon.src = `public/image/${weatherCondition}.svg`;
         });
     }
 });
@@ -96,25 +76,31 @@ function toggleHide(className) {
 const queryNasa = async () => {
     const searchTerm = document.getElementById("search-input");
     const query = searchTerm.value;
-    let urlNASA = `https://images-api.nasa.gov/search?q=${query}`;
+    const baseUrl = `https://images-api.nasa.gov/search?q=${query}&media_type=image`;
+    const videoOption = document.querySelector('#search-option1');
+    let urlNASA = videoOption.checked ? `${baseUrl},video` : baseUrl ;
     const resp = await fetch(urlNASA);
     const data = await resp.json()
     console.log(data);
     const searchResultsNASA = document.querySelector('#nasa-search-results')
     searchResultsNASA.textContent = '';
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 9 ; i++) {
+        const imgSrc = data.collection.items[i]['links'][0].href;
     searchResultsNASA.innerHTML += `
-        <article>
+        <article class='cards'>
       <div>
-      <img class='imgsNASA' src='${data.collection.items[i]['links'][0].href}'>
+      <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
       </div>
       <div>
       <h3>Title: ${data.collection.items[i]['data'][0].title}</h3>
-      <p>Date: ${data.collection.items[i]['data'][0]['date_created']}</p>
+      <p>Date: ${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
+      <button id='cards${i}'>Get More Details</button>
       </div>
     </article>
     `}
+
 }
+
 
 
 const searchButton = document.querySelector('#search-btn');
@@ -150,9 +136,7 @@ return new Promise((resolve, reject) => {
     }
 });
 
-else {
-    console.log(123)
-    const locError = document.createElement('div');
+else { const locError = document.createElement('div');
     const welcome = document.getElementById('welcome');
     welcome.appendChild(locError);
     locError.textContent = "I can't get your location";

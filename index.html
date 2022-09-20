@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Astronomy Images from NASA</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./public/image/NASA_logo.svg.png"
+    />
   </head>
   <body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
     <div class="content">
       <header>
         <h1 id="location"></h1>
@@ -18,12 +25,18 @@
           </div>
           <h3 id="description"></h3>
         </div>
+        <button id="nasa-screen">
+          <span class="text">Lets Jump to NASA</span>
+        </button>
       </header>
       <main>
         <div class="nasa">
-          <h1 class="picture">What do you think about Astronomy?</h1>
-          <button id="yes">I love it!</button>
-          <button id="no">It's Boring!</button>
+          <h1>What do you think about Astronomy?</h1>
+          <div class="alignment">
+            <button id="yes"><span class="text">I love it!</span></button>
+            <button id="no"><span class="text">It's Boring!</span></button>
+          </div>
+          <div class="break"></div>
           <div class="reaction"></div>
           <div class="nasa-data">
             <img id="apod" src="" alt="" />
@@ -43,7 +56,13 @@
               placeholder="Enter your astronomical query..."
               id="search-input"
             />
-            <button type="submit" class="" id="search-btn">search</button>
+            <button type="submit" class="" id="search-btn">
+              <span class="text">search</span>
+            </button>
+          </div>
+          <div class="search-options">
+            <input type="checkbox" id="search-option1" name="option1" />
+            <label for="search-option1">Include Videos</label>
           </div>
           <div id="nasa-search-results"></div>
         </div>
