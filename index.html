@@ -13,60 +13,68 @@
     />
   </head>
   <body>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    <div class="content">
-      <header>
-        <h1 id="location"></h1>
-        <div id="weather-info">
-          <h2 id="temperature"></h2>
-          <div class="wrapper">
-            <img id="icon" />
-          </div>
-          <h3 id="description"></h3>
-        </div>
-        <button id="nasa-screen">
-          <span class="text">Lets Jump to NASA</span>
-        </button>
-      </header>
-      <main>
-        <div class="nasa">
-          <h1>What do you think about Astronomy?</h1>
-          <div class="alignment">
-            <button id="yes"><span class="text">I love it!</span></button>
-            <button id="no"><span class="text">It's Boring!</span></button>
-          </div>
-          <div class="break"></div>
-          <div class="reaction"></div>
-          <div class="nasa-data">
-            <img id="apod" src="" alt="" />
-            <div class="explanation">
-              <input type="checkbox" id="option" name="option" />
-              <label for="option">Show Explanation</label>
+    <div class="stars">
+      <div class="twinkling">
+        <div class="content">
+          <header id="header">
+            <h1 id="location"></h1>
+            <div id="weather-info">
+              <h2 id="temperature"></h2>
+              <div class="wrapper">
+                <img id="icon" />
+              </div>
+              <h3 id="description"></h3>
             </div>
-            <p class="explanation-p"></p>
-          </div>
-        </div>
-        <div class="nasa-images">
-          <h2>Let's search NASA's database</h2>
-          <div class="search-box">
-            <input
-              type="text"
-              class="search-query"
-              placeholder="Enter your astronomical query..."
-              id="search-input"
-            />
-            <button type="submit" class="" id="search-btn">
-              <span class="text">search</span>
+            <button id="nasa-screen">
+              <span class="text">Lets Jump to NASA</span>
             </button>
-          </div>
-          <div class="search-options">
-            <input type="checkbox" id="search-option1" name="option1" />
-            <label for="search-option1">Include Videos</label>
-          </div>
-          <div id="nasa-search-results"></div>
+          </header>
+          <main class>
+            <div id="main-screen" class="hidden">
+              <div id="astronomy-question">
+                <h1>What do you think about Astronomy?</h1>
+                <div class="alignment">
+                  <button id="yes"><span class="text">I love it!</span></button>
+                  <button id="no">
+                    <span class="text">It's Boring!</span>
+                  </button>
+                </div>
+                <div class="break"></div>
+                <div class="reaction"></div>
+              </div>
+
+              <div class="nasa-data">
+                <img id="apod" src="" alt="" />
+                <div class="explanation">
+                  <input type="checkbox" id="option" name="option" />
+                  <label for="option">Show Explanation</label>
+                </div>
+                <p class="explanation-p"></p>
+              </div>
+            </div>
+            <button id="to-database" class="hidden">continue</button>
+            <div class="nasa-images hidden">
+              <h2>Let's search NASA's database</h2>
+              <div class="search-box">
+                <input
+                  type="text"
+                  class="search-query"
+                  placeholder="Enter your astronomical query..."
+                  id="search-input"
+                />
+                <button type="submit" class="" id="search-btn">
+                  <span class="text">search</span>
+                </button>
+              </div>
+              <div class="search-options">
+                <input type="checkbox" id="search-option1" name="option1" />
+                <label for="search-option1">Include Videos</label>
+              </div>
+              <div id="nasa-search-results"></div>
+            </div>
+          </main>
         </div>
-      </main>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
