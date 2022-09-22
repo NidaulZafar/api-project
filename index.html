@@ -31,7 +31,7 @@
           </header>
           <main class>
             <div id="main-screen" class="hidden">
-              <div id="astronomy-question">
+              <div id="astronomy-question" class="hidden">
                 <h1>What do you think about Astronomy?</h1>
                 <div class="alignment">
                   <button id="yes"><span class="text">I love it!</span></button>
@@ -43,13 +43,13 @@
                 <div class="reaction"></div>
               </div>
 
-              <div class="nasa-data">
+              <div class="nasa-data hidden">
                 <img id="apod" src="" alt="" />
                 <div class="explanation">
                   <input type="checkbox" id="option" name="option" />
                   <label for="option">Show Explanation</label>
                 </div>
-                <p class="explanation-p"></p>
+                <p class="explanation-p hidden"></p>
               </div>
             </div>
             <button id="to-database" class="hidden">continue</button>
@@ -71,6 +71,9 @@
                 <label for="search-option1">Include Videos</label>
               </div>
               <div id="nasa-search-results"></div>
+              <button id="back-home">
+                <span class="text">Main Menu</span>
+              </button>
             </div>
           </main>
         </div>

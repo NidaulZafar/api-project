@@ -45,6 +45,8 @@ nasaScreen.addEventListener('click', () => {
     header.classList.add('hidden');
     const mainScreen = document.querySelector('#main-screen');
     mainScreen.classList.remove('hidden');
+    const astronomyQuestion = document.querySelector('#astronomy-question');
+    astronomyQuestion.classList.remove('hidden');
 
 
     const yesButton = document.querySelector('#yes');
@@ -64,23 +66,24 @@ nasaScreen.addEventListener('click', () => {
     const dataNASA = document.querySelector('.nasa-data');
     const explanation = document.querySelector('.explanation')
     const explanationPara = document.querySelector('.explanation-p')
-    toggleHide('.explanation');
+    explanation.classList.add('hidden');
     yesButton.addEventListener('click', async () => {
         reaction.classList.remove('hidden');
         reaction.innerHTML = `<p>Let me fetch a cool picture from NASA</p>`;
-        const astronomyQuestion = document.querySelector('#astronomy-question');
-
         setTimeout(async() => {
             reaction.classList.add('hidden');
             reaction.textContent = '';
             astronomyQuestion.classList.add('hidden');
+            dataNASA.classList.remove('hidden');
+            imgNASA.classList.remove('hidden');
+            explanationPara.classList.remove('hidden');
             const apiNASA = 'TlcKEgRGq6uJcfvbGEGveueKIgs7WPsRnRvXvLrw';
         const urlNASA = `https://api.nasa.gov/planetary/apod?api_key=${apiNASA}`
         const response = await fetch(urlNASA);
         const data = await response.json();
         console.log(data);
         imgNASA.src = data.url;
-        toggleHide('.explanation')
+        explanation.classList.remove('hidden');
         const option = document.querySelector('#option');
         option.addEventListener('click', () => {
             explanationPara.textContent = option.checked ? data.explanation
@@ -103,12 +106,6 @@ nasaScreen.addEventListener('click', () => {
 
     
 })
-
-// toggle the show explanation button
-function toggleHide(className) {
-    var element = document.querySelector(className);
-    element.classList.toggle("hidden");
-}    
 
 const queryNasa = async () => {
     const searchTerm = document.getElementById("search-input");
@@ -144,7 +141,12 @@ const searchButton = document.querySelector('#search-btn');
 searchButton.addEventListener('click', queryNasa);
 
 
+const backHomeButton = document.querySelector('#back-home');
+backHomeButton.addEventListener('click', () => {
+    nasaImages.classList.add('hidden');
+    header.classList.remove('hidden');
 
+})
 
 
 
@@ -183,6 +185,12 @@ else { const locError = document.createElement('div');
     let lon = 4.897070;
 }
 
+
+// toggle the show explanation button
+function toggleHide(className) {
+    var element = document.querySelector(className);
+    element.classList.toggle("hidden");
+}    
 
 
 
