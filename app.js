@@ -34,9 +34,6 @@ window.addEventListener('load', () => {
     }
 });
 
-
-
-
 const nasaScreen = document.querySelector('#nasa-screen');
 const nasaImages = document.querySelector('.nasa-images');
 //  On clicking and Entering the NASA screen Button
@@ -47,8 +44,6 @@ nasaScreen.addEventListener('click', () => {
     mainScreen.classList.remove('hidden');
     const astronomyQuestion = document.querySelector('#astronomy-question');
     astronomyQuestion.classList.remove('hidden');
-
-
     const yesButton = document.querySelector('#yes');
     const noButton = document.querySelector('#no');
     const reaction = document.querySelector('.reaction');
@@ -91,8 +86,7 @@ nasaScreen.addEventListener('click', () => {
         })          
         const databaseButton = document.querySelector('#to-database');
         databaseButton.classList.remove('hidden');
-        }, 1500)
-        
+        }, 1500) 
     })
     const databaseButton = document.querySelector('#to-database');
     databaseButton.addEventListener('click', () => {
@@ -102,9 +96,7 @@ nasaScreen.addEventListener('click', () => {
         explanationPara.classList.add('hidden');
         databaseButton.classList.add('hidden');
         nasaImages.classList.remove('hidden');
-    })
-
-    
+    })    
 })
 
 const searchResultsNASA = document.querySelector('#nasa-search-results')
@@ -126,39 +118,22 @@ const queryNasa = async () => {
     <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
     </div>
     <div>
-    <h3>Title: ${data.collection.items[i]['data'][0].title}</h3>
-    <p>Date: ${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
+    <h3>${data.collection.items[i]['data'][0].title}</h3>
+    <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
     <button id='cards${i}'>Get More Details</button>
     </div>
     </article>
     `}
-
 }
-
-
 
 const searchButton = document.querySelector('#search-btn');
 searchButton.addEventListener('click', queryNasa);
-
-
 const backHomeButton = document.querySelector('#back-home');
 backHomeButton.addEventListener('click', () => {
     nasaImages.classList.add('hidden');
     header.classList.remove('hidden');
     searchResultsNASA.innerHTML = '';
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -185,16 +160,11 @@ else { const locError = document.createElement('div');
     let lon = 4.897070;
 }
 
-
 // toggle the show explanation button
 function toggleHide(className) {
     var element = document.querySelector(className);
     element.classList.toggle("hidden");
 }    
-
-
-
-
 
 
 */

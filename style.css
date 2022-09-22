@@ -34,7 +34,35 @@ background:transparent url(./public/image/twinkling.png) repeat top center;
 animation: twinkle-movement 200s linear infinite;
 } 
 
-
+button {
+  background-image: linear-gradient(124deg,#ae4e4e,#0a26f8);
+  box-shadow: rgba(151, 65, 252, 0.2) 0 10px 10px 10px;
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  padding: 3px;
+  cursor: pointer;
+}
+  
+button:hover {
+    box-shadow: none;
+}
+  
+button span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  transition: 300ms;
+}
+  
+button:hover span {
+  background: none;
+}
+ 
 .content {
   max-width: 85vw;
   height: auto;
@@ -48,15 +76,11 @@ animation: twinkle-movement 200s linear infinite;
 
 header {
   margin-top: 30vh;
-  border: 5px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-
-
 
 h1, h2 {
   text-align: center;
@@ -82,7 +106,6 @@ h1, h2 {
 #astronomy-question {
   margin-top: 30vh;
   padding: 20px;
-  border: 2px solid yellow;
 }
 
 .alignment {
@@ -122,18 +145,18 @@ h1, h2 {
 }
 
 
-.search-box, #back-home {
+#back-home {
   display: flex;
   width: 30vw;
   margin: 20px auto;
 }
 
-.search-query {  
-  background-color: #000;
-  color: #fff;
-  height: 40px;
-  width: 100%;
-  padding: 6px 10px;
+.search-area {
+  border-radius: 6px;
+  text-align: center;
+  justify-content: center;
+  transition: 300ms;
+  box-shadow: none;  
 }
 
 ::placeholder {
@@ -141,7 +164,49 @@ h1, h2 {
   opacity: 0.7; 
 }
 
+/*  */
+.search-box {
+  display: flex;
+  align-items: stretch;
+  width: 30vw;
+  margin: 0px auto;
+}
+.search-query,
+#search-btn {
+  width: 100%;
+}
+.search-query {
+  padding: 0 1rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+  outline: 0;
+  background-color: #000;
+  border-color: purple;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
 
+#search-btn {
+  border-radius: 0;
+  width: 55px;
+  height: 55px;
+  font-size: 1.8rem;
+  color: #fff;
+  border: none;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  transition: all 0.4s linear;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  display: block;
+}
+#search-btn:hover {
+  background-image: linear-gradient(124deg,#ae4e4e,#0a26f8);
+}
+
+/*  */
 
 #nasa-search-results {
   display: flex;
@@ -164,43 +229,6 @@ h1, h2 {
   width: 15vw;
   height: auto;
 }
-
-
-button {
-align-items: center;
-background-image: linear-gradient(124deg,#ae4e4e,#0a26f8);
-box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-border: 0;
-border-radius: 8px;
-box-sizing: border-box;
-color: #FFFFFF;
-display: flex;
-font-family: Phantomsans, sans-serif;
-font-size: 20px;
-justify-content: center;
-line-height: 1em;
-max-width: 100%;
-/* min-width: 140px; */
-padding: 3px;
-text-decoration: none;
-user-select: none;
--webkit-user-select: none;
-touch-action: manipulation;
-white-space: nowrap;
-cursor: pointer;
-}
-
-button span {
-background-color: rgb(5, 6, 45);
-padding: 16px 24px;
-border-radius: 6px;
-transition: 300ms;
-}
-
-button:hover span {
-background: none;
-}
-
 
 #to-database {
   margin-left: auto;
