@@ -107,6 +107,7 @@ nasaScreen.addEventListener('click', () => {
     
 })
 
+const searchResultsNASA = document.querySelector('#nasa-search-results')
 const queryNasa = async () => {
     const searchTerm = document.getElementById("search-input");
     const query = searchTerm.value;
@@ -116,7 +117,6 @@ const queryNasa = async () => {
     const resp = await fetch(urlNASA);
     const data = await resp.json()
     console.log(data);
-    const searchResultsNASA = document.querySelector('#nasa-search-results')
     searchResultsNASA.textContent = '';
     for (let i = 0; i < 9 ; i++) {
         const imgSrc = data.collection.items[i]['links'][0].href;
@@ -145,7 +145,7 @@ const backHomeButton = document.querySelector('#back-home');
 backHomeButton.addEventListener('click', () => {
     nasaImages.classList.add('hidden');
     header.classList.remove('hidden');
-
+    searchResultsNASA.innerHTML = '';
 })
 
 
