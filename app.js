@@ -1,4 +1,5 @@
-window.addEventListener('load', () => {
+
+const welcomeScreen = () => {
     const apiKey = '24bb21182ada6dcc2c538be1bb4be546'
     const loc = document.querySelector('#location');
     const temp = document.querySelector('#temperature');
@@ -32,12 +33,19 @@ window.addEventListener('load', () => {
             icon.src = `public/image/${weatherCondition}.svg`;
         });
     }
-});
+}
 
-const nasaScreen = document.querySelector('#nasa-screen');
+const nasaScreenButton = document.querySelector('#nasa-screen-button');
 const nasaImages = document.querySelector('.nasa-images');
+
+
+window.addEventListener('load', welcomeScreen);
+
+
+
+
 //  On clicking and Entering the NASA screen Button
-nasaScreen.addEventListener('click', () => {
+nasaScreenButton.addEventListener('click', () => {
     const header = document.getElementById('header');
     header.classList.add('hidden');
     const mainScreen = document.querySelector('#main-screen');
@@ -108,7 +116,6 @@ const queryNasa = async () => {
     let urlNASA = videoOption.checked ? `${baseUrl},video` : baseUrl ;
     const resp = await fetch(urlNASA);
     const data = await resp.json()
-    console.log(data);
     searchResultsNASA.textContent = '';
     for (let i = 0; i < 9 ; i++) {
         const imgSrc = data.collection.items[i]['links'][0].href;
