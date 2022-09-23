@@ -17,9 +17,11 @@
     ></script>
   </head>
   <body>
+    <!-- background animation -->
     <div class="stars">
       <div class="twinkling">
-        <div class="content">
+        <!--center container -->
+        <div class="container">
           <header id="header">
             <h1 id="location"></h1>
             <div id="weather-info">
@@ -34,6 +36,7 @@
             </button>
           </header>
           <main class>
+            <!-- Astronomy Picture of the Day -->
             <div id="main-screen" class="hidden">
               <div id="astronomy-question" class="hidden">
                 <h1>What do you think about Astronomy?</h1>
@@ -46,7 +49,6 @@
                 <div class="break"></div>
                 <div class="reaction"></div>
               </div>
-
               <div class="nasa-data hidden">
                 <img id="apod" src="" alt="" />
                 <div class="explanation">
@@ -57,6 +59,7 @@
               </div>
             </div>
             <button id="to-database" class="hidden">continue</button>
+            <!-- NASA database queries -->
             <div class="nasa-images hidden">
               <h2>Let's search NASA's database</h2>
               <div class="search-box">

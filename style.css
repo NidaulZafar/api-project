@@ -3,36 +3,35 @@
   padding: 0;
 }
 
+/* background animation styles starts here 
+Courtesy Carla-Codes Github
+*/
 
-
-
-@keyframes twinkle-movement {
+@keyframes twinkle-effect {
   from {background-position:0 0;}
   to {background-position:-10000px 5000px;}
 }
 
 .stars, .twinkling {
 position:absolute;
-top:0;
-left:0;
-right:0;
-bottom:0;
 width:100%;
 height:100%;
 display:block;
 overflow: scroll;
-
 }
 
 .stars {
 background:#000 url(./public/image/stars.png) repeat top center;
-z-index: 13;
 }
 
 .twinkling{
 background:transparent url(./public/image/twinkling.png) repeat top center;
-animation: twinkle-movement 200s linear infinite;
+animation: twinkle-effect 200s linear infinite;
 } 
+
+
+/* styling for the buttons 
+courtesy:  getcssscan*/
 
 button {
   background-image: linear-gradient(124deg,#ae4e4e,#0a26f8);
@@ -63,7 +62,9 @@ button:hover span {
   background: none;
 }
  
-.content {
+
+/* main container in the center */
+.container {
   max-width: 85vw;
   height: auto;
   margin: auto;
@@ -74,6 +75,7 @@ button:hover span {
   color: white;
 }
 
+/* welcome screen starts here */
 header {
   margin-top: 30vh;
   display: flex;
@@ -82,10 +84,13 @@ header {
   align-items: center;
 }
 
+.hidden {
+  display: none;
+}
+
 h1, h2 {
   text-align: center;
 }
-
 
 #weather-info {
   display: flex;
@@ -97,11 +102,15 @@ h1, h2 {
   cursor: alias;
 }
 
+/* to wrap the svg icon */
+/* courtesy Bas Milius */
 .wrapper {
   width: 150px;
   padding: -20px;
   margin-top: -25px;
 }
+
+/* NASA APOD screen starts here */
 
 #astronomy-question {
   margin-top: 30vh;
@@ -113,18 +122,6 @@ h1, h2 {
   align-items: center;
   justify-content: space-around;
   margin-top: 50px;
-}
-
-.reaction p, .explanation-p {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 18px;
-  padding: 2vw;
-  line-height: 24px;
-  
-}
-
-.hidden {
-  display: none;
 }
 
 .nasa-data {
@@ -139,46 +136,43 @@ h1, h2 {
   height: auto;
 }
 
+.reaction p, .explanation-p {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  padding: 2vw;
+  line-height: 24px;
+  
+}
+
+
+/* NASA database screen  */
+
+#to-database {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .nasa-images {
   width: 100%;
 }
 
-
-#back-home {
-  display: flex;
-  width: 30vw;
-  margin: 20px auto;
-}
-
-.search-area {
-  border-radius: 6px;
-  text-align: center;
-  justify-content: center;
-  transition: 300ms;
-  box-shadow: none;  
-}
-
-::placeholder {
-  color: #fff;
-  opacity: 0.7; 
-}
-
-/*  */
 .search-box {
   display: flex;
   align-items: stretch;
   width: 30vw;
   margin: 0px auto;
 }
+
 .search-query,
 #search-btn {
   width: 100%;
 }
+
 .search-query {
   padding: 0 1rem;
   font-size: 1.1rem;
   font-family: inherit;
+  color: #fff;
   outline: 0;
   background-color: #000;
   border-color: purple;
@@ -202,11 +196,23 @@ h1, h2 {
   -o-transition: all 0.4s linear;
   display: block;
 }
+
 #search-btn:hover {
   background-image: linear-gradient(124deg,#ae4e4e,#0a26f8);
 }
 
-/*  */
+.search-area {
+  border-radius: 6px;
+  text-align: center;
+  justify-content: center;
+  transition: 300ms;
+  box-shadow: none;  
+}
+
+::placeholder {
+  color: #fff;
+  opacity: 0.7; 
+}
 
 #nasa-search-results {
   display: flex;
@@ -230,7 +236,8 @@ h1, h2 {
   height: auto;
 }
 
-#to-database {
-  margin-left: auto;
-  margin-right: auto;
+#back-home {
+  display: flex;
+  width: 30vw;
+  margin: 20px auto;
 }
