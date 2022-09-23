@@ -1,3 +1,11 @@
+const nasaScreenButton = document.querySelector('#nasa-screen-button');
+const nasaImages = document.querySelector('.nasa-images');
+const searchResultsNASA = document.querySelector('#nasa-search-results')
+const searchButton = document.querySelector('#search-btn');
+const backHomeButton = document.querySelector('#back-home');
+
+const x = document.getElementById("msg");
+
 
 const welcomeScreen = () => {
     const apiKey = '24bb21182ada6dcc2c538be1bb4be546'
@@ -12,13 +20,14 @@ const welcomeScreen = () => {
             const lat = position.coords.latitude;
             const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
             const resp = await fetch(url);
+            console.log('resp:',resp)
             const data = await resp.json()
-            console.log(data)
+            console.log('data:', data)
             loc.textContent = `Showing you the weather for ${data.name}`;
             let temperature = data.main.temp;
             temp.innerHTML = `Current Temp is: ${Math.floor(temperature)}<span>&#176;</span>C`;
             description.textContent = data.weather[0].description;
-            temp.addEventListener('click', () => {
+                temp.addEventListener('click', () => {
                 if (temperature === data.main.temp) {
                     let fahrenheit = (temperature * (9 / 5) + 32) ;
                     temp.innerHTML = `Current Temp is: ${Math.floor(fahrenheit)}<span>&#176;</span>F`;
@@ -27,17 +36,30 @@ const welcomeScreen = () => {
                     temperature = data.main.temp
                     temp.innerHTML = `Current Temp is: ${Math.floor(temperature)}<span>&#176;</span>C`;
                 }
-            })
-            console.log(data.weather[0].main)
+                })
             const weatherCondition = data.weather[0].main;
             icon.src = `public/image/${weatherCondition}.svg`;
-        });
+                    
+        }, showError);
     }
 }
 
-const nasaScreenButton = document.querySelector('#nasa-screen-button');
-const nasaImages = document.querySelector('.nasa-images');
-
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        default:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
 
 window.addEventListener('load', welcomeScreen);
 
@@ -107,7 +129,6 @@ nasaScreenButton.addEventListener('click', () => {
     })    
 })
 
-const searchResultsNASA = document.querySelector('#nasa-search-results')
 const queryNasa = async () => {
     const searchTerm = document.getElementById("search-input");
     const query = searchTerm.value;
@@ -133,9 +154,8 @@ const queryNasa = async () => {
     `}
 }
 
-const searchButton = document.querySelector('#search-btn');
+
 searchButton.addEventListener('click', queryNasa);
-const backHomeButton = document.querySelector('#back-home');
 backHomeButton.addEventListener('click', () => {
     nasaImages.classList.add('hidden');
     header.classList.remove('hidden');
