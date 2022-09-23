@@ -17,7 +17,9 @@ const welcomeScreen = () => {
             const lat = position.coords.latitude;
             const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
             const resp = await fetch(url);
+            console.log(resp)
             const data = await resp.json()
+            console.log(data)
             return new Promise((resolve, reject) => {
                 if (resp.ok) {
                     loc.textContent = `Showing you the weather for ${data.name}`;
@@ -38,7 +40,7 @@ const welcomeScreen = () => {
                     icon.src = `public/image/${weatherCondition}.svg`;
                     resolve();
                 } else {
-                   reject(loc.textContent = data.message, console.log('fails'));
+                   reject(loc.textContent = data.message);
                 }
             })
                                 
