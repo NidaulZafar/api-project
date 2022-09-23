@@ -5,7 +5,7 @@ const searchButton = document.querySelector('#search-btn');
 const backHomeButton = document.querySelector('#back-home');
 
 const x = document.getElementById("msg");
-
+addEventListener
 
 const welcomeScreen = () => {
     const apiKey = '24bb21182ada6dcc2c538be1bb4be546'
