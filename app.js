@@ -38,8 +38,8 @@ const nasaScreen = document.querySelector('#nasa-screen');
 const nasaImages = document.querySelector('.nasa-images');
 //  On clicking and Entering the NASA screen Button
 nasaScreen.addEventListener('click', () => {
-    const welcomeScreen = document.getElementById('welcome-screen');
-    welcomeScreen.classList.add('hidden');
+    const header = document.getElementById('header');
+    header.classList.add('hidden');
     const mainScreen = document.querySelector('#main-screen');
     mainScreen.classList.remove('hidden');
     const astronomyQuestion = document.querySelector('#astronomy-question');
@@ -131,7 +131,7 @@ searchButton.addEventListener('click', queryNasa);
 const backHomeButton = document.querySelector('#back-home');
 backHomeButton.addEventListener('click', () => {
     nasaImages.classList.add('hidden');
-    welcomeScreen.classList.remove('hidden');
+    header.classList.remove('hidden');
     searchResultsNASA.innerHTML = '';
 })
 

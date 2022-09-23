@@ -76,7 +76,7 @@ button:hover span {
 }
 
 /* welcome screen starts here */
-#welcome-screen {
+header {
   margin-top: 30vh;
   display: flex;
   flex-direction: column;
