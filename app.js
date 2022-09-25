@@ -41,10 +41,12 @@ const welcomeScreen = () => {
                 } else if (!resp.ok) {
                     loc.innerHTML = `Couldn't fetch the weather data! <br>
                     ${data.message} `
+                    console.log('else if fired')
                 }
             } catch (error) {
                 loc.innerHTML = `Couldn't fetch the weather data! <br> 
                 ${error}`;
+                console.log('catch fired')
             }
         }, showLocationError, {timeout: 5000});
     }
@@ -98,6 +100,7 @@ nasaScreenButton.addEventListener('click', () => {
     const dataNASA = document.querySelector('.nasa-data');
     const explanation = document.querySelector('.explanation')
     const explanationPara = document.querySelector('.explanation-p')
+    const headingAPOD = document.querySelector('#apod-heading');
     explanation.classList.add('hidden');
     yesButton.addEventListener('click', async () => {
         reaction.classList.remove('hidden');
@@ -111,22 +114,39 @@ nasaScreenButton.addEventListener('click', () => {
             explanationPara.classList.remove('hidden');
             const apiNASA = 'TlcKEgRGq6uJcfvbGEGveueKIgs7WPsRnRvXvLrw';
             const urlNASA = `https://api.nasa.gov/planetary/apod?api_key=${apiNASA}`
-            const response = await fetch(urlNASA);
-            const data = await response.json();
-            console.log(data);
-            imgNASA.src = data.url;
-            explanation.classList.remove('hidden');
-            const option = document.querySelector('#option');
-            const databaseButton = document.querySelector('#to-database');
-            databaseButton.classList.remove('hidden');
-            option.addEventListener('click', () => {
-                explanationPara.textContent = option.checked ? data.explanation
-                : 'Check the box above to learn more about this picture';
-            })          
+            try {
+                const response = await fetch(urlNASA);
+                const data = await response.json();
+                console.log(response);
+                console.log(data);
+                if (response.ok) {
+                    headingAPOD.textContent = 'Checkout this Incredible Image from NASA';
+                    imgNASA.src = data.url;
+                    explanation.classList.remove('hidden');
+                    const option = document.querySelector('#option');
+                    const databaseButton = document.querySelector('#to-database');
+                    databaseButton.classList.remove('hidden');
+                    option.addEventListener('click', () => {
+                        explanationPara.textContent = option.checked ? data.explanation
+                        : 'Check the box above to learn more about this picture';
+                    })
+                }
+                else if (!response.ok) {
+                    headingAPOD.textContent = data.error.message;
+                    console.log('else if:', data.error.message)
+                    throw new Error(data);
+                }
+            } catch (error) {
+                console.log('catch error:', error)
+                headingAPOD.textContent = error
+            }
+                      
         }, 1500) 
     })
     const databaseButton = document.querySelector('#to-database');
     databaseButton.addEventListener('click', () => {
+        
+        headingAPOD.classList.add('hidden');
         dataNASA.classList.add('hidden');
         imgNASA.classList.add('hidden');
         explanation.classList.add('hidden');
@@ -141,26 +161,34 @@ const queryNasa = async () => {
     const query = searchTerm.value;
     const baseUrl = `https://images-api.nasa.gov/search?q=${query}&media_type=image`;
     const videoOption = document.querySelector('#search-option1');
-    let urlNASA = videoOption.checked ? `${baseUrl},video` : baseUrl ;
-    const resp = await fetch(urlNASA);
-    const data = await resp.json()
-    searchResultsNASA.textContent = '';
-    for (let i = 0; i < 9 ; i++) {
-        const imgSrc = data.collection.items[i]['links'][0].href;
-    searchResultsNASA.innerHTML += `
-        <article class='cards'>
-    <div>
-    <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
-    </div>
-    <div>
-    <h3>${data.collection.items[i]['data'][0].title}</h3>
-    <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
-    <button id='cards${i}'>Get More Details</button>
-    </div>
-    </article>
-    `}
+    let urlNASA = videoOption.checked ? `${baseUrl},video` : baseUrl;
+    try {
+        const resp = await fetch(urlNASA);
+        console.log(resp);
+        const data = await resp.json()
+        console.log(data);
+        if (resp.ok) {
+            searchResultsNASA.textContent = '';
+            for (let i = 0; i < 9; i++) {
+                const imgSrc = data.collection.items[i]['links'][0].href;
+                searchResultsNASA.innerHTML += `
+                    <article class='cards'>
+                    <div>
+                    <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
+                    </div>
+                    <div>
+                    <h3>${data.collection.items[i]['data'][0].title}</h3>
+                    <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
+                    <button id='cards${i}'>Get More Details</button>
+                    </div>
+                    </article>
+                `;
+            }
+        }
+    } catch (error) {
+        console.log('catch error', error)
+    }
 }
-
 
 searchButton.addEventListener('click', queryNasa);
 backHomeButton.addEventListener('click', () => {

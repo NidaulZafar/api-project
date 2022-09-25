@@ -240,3 +240,7 @@ h1, h2 {
   display: flex;
   margin: 20px auto;
 }
+
+.error {
+  background-color: red;
+}
