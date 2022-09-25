@@ -210,7 +210,6 @@ h1, h2 {
 }
 
 
-
 @media (max-width: 550px) {
   #weather-info {
     flex-direction: column;
