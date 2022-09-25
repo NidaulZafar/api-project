@@ -19,20 +19,16 @@ height:100%;
 display:block;
 overflow: scroll;
 }
-
 .stars {
 background:#000 url(./public/image/stars.png) repeat top center;
 }
-
 .twinkling{
 background:transparent url(./public/image/twinkling.png) repeat top center;
 animation: twinkle-effect 200s linear infinite;
 } 
 
-
 /* styling for the buttons 
 courtesy:  getcssscan*/
-
 button {
   background-image: linear-gradient(124deg,#ae4e4e,#0a26f8);
   box-shadow: rgba(151, 65, 252, 0.2) 0 10px 10px 10px;
@@ -46,22 +42,18 @@ button {
   padding: 3px;
   cursor: pointer;
 }
-  
 button:hover {
     box-shadow: none;
 }
-  
 button span {
   background-color: rgb(5, 6, 45);
   padding: 16px 24px;
   border-radius: 6px;
   transition: 300ms;
 }
-  
 button:hover span {
   background: none;
 }
- 
 
 /* main container in the center */
 .container {
@@ -83,21 +75,17 @@ header {
   justify-content: center;
   align-items: center;
 }
-
 .hidden {
   display: none;
 }
-
 h1, h2 {
   text-align: center;
 }
-
 #weather-info {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 #temperature {
   cursor: alias;
 }
@@ -111,31 +99,26 @@ h1, h2 {
 }
 
 /* NASA APOD screen starts here */
-
 #astronomy-question {
   margin-top: 30vh;
   padding: 20px;
 }
-
 .alignment {
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-top: 50px;
 }
-
 .nasa-data {
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
 }
-
 #apod {
-  width: 60vw;
+  max-width: 60vw;
   height: auto;
 }
-
 .reaction p, .explanation-p {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 18px;
@@ -143,31 +126,24 @@ h1, h2 {
   line-height: 24px;
   
 }
-
-
 /* NASA database screen  */
-
 #to-database {
   margin-left: auto;
   margin-right: auto;
 }
-
 .nasa-images {
   width: 100%;
 }
-
 .search-box {
   display: flex;
   align-items: stretch;
   width: 30vw;
   margin: 0px auto;
 }
-
 .search-query,
 #search-btn {
   width: 100%;
 }
-
 .search-query {
   padding: 0 1rem;
   font-size: 1.1rem;
@@ -179,7 +155,6 @@ h1, h2 {
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
 }
-
 #search-btn {
   border-radius: 0;
   width: 55px;
@@ -196,11 +171,9 @@ h1, h2 {
   -o-transition: all 0.4s linear;
   display: block;
 }
-
 #search-btn:hover {
   background-image: linear-gradient(124deg,#ae4e4e,#0a26f8);
 }
-
 .search-area {
   border-radius: 6px;
   text-align: center;
@@ -208,12 +181,10 @@ h1, h2 {
   transition: 300ms;
   box-shadow: none;  
 }
-
-::placeholder {
+.search-area::placeholder {
   color: #fff;
   opacity: 0.7; 
 }
-
 #nasa-search-results {
   display: flex;
   flex-wrap: wrap;
@@ -222,7 +193,6 @@ h1, h2 {
   justify-content: center;
   
 }
-
 .cards {
   width: 33%;
   overflow: auto;
@@ -230,17 +200,46 @@ h1, h2 {
   align-items: center;
   justify-content: center;
 }
-
 .imgsNASA {
   width: 15vw;
   height: auto;
 }
-
 #back-home {
   display: flex;
   margin: 20px auto;
 }
 
-.error {
-  background-color: red;
+
+@media (max-width: 550px) {
+  #weather-info {
+    flex-direction: column;
+    margin: 15px;
+  }
+  .alignment {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .alignment button {
+    margin: 15px;
+  }
+  .alignment button span {
+    width: 10rem;
+  }
+  .explanation-p {
+    max-height: 250px;
+    overflow: scroll;
+    margin-bottom: 30px;
+  }
+  #nasa-search-results {
+    flex-direction: column;
+  }
+  .cards {
+    width: 100%;
+    height: auto;
+  }
+  .imgsNASA {
+    width: 40vw;
+    margin: 10px;
+  }
 }
