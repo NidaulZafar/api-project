@@ -19,7 +19,7 @@ const welcomeScreen = () => {
             try {
                 const resp = await fetch(url);
                 const data = await resp.json()
-                console.log('resp:',resp)
+                console.log('resp:', resp)
                 console.log('data:', data);
                 if (resp.ok) {
                     loc.textContent = `Showing you the weather for ${data.name}`;
@@ -46,7 +46,7 @@ const welcomeScreen = () => {
                 loc.innerHTML = `Couldn't fetch the weather data! <br> 
                 ${error}`;
             }
-        }, showLocationError);
+        }, showLocationError, {timeout: 5000});
     }
 }
 
@@ -76,18 +76,18 @@ window.addEventListener('load', welcomeScreen);
 //  On clicking and Entering the NASA screen Button
 nasaScreenButton.addEventListener('click', () => {
     const header = document.getElementById('header');
-    header.classList.add('hidden');
     const mainScreen = document.querySelector('#main-screen');
-    mainScreen.classList.remove('hidden');
     const astronomyQuestion = document.querySelector('#astronomy-question');
-    astronomyQuestion.classList.remove('hidden');
     const yesButton = document.querySelector('#yes');
     const noButton = document.querySelector('#no');
     const reaction = document.querySelector('.reaction');
+    header.classList.add('hidden');
+    mainScreen.classList.remove('hidden');
+    astronomyQuestion.classList.remove('hidden');
     noButton.addEventListener('click', () => {
         reaction.classList.remove('hidden');
         reaction.innerHTML = `<p>If astronomy bores you, let me tell you a joke. Do you know how astronomers party?
-        They plan'et. Hahaha... <br> 
+        They plan'et.<br> 
         Now Click the other button.</p>`
         setTimeout(() => {
             reaction.classList.add('hidden');
@@ -110,19 +110,19 @@ nasaScreenButton.addEventListener('click', () => {
             imgNASA.classList.remove('hidden');
             explanationPara.classList.remove('hidden');
             const apiNASA = 'TlcKEgRGq6uJcfvbGEGveueKIgs7WPsRnRvXvLrw';
-        const urlNASA = `https://api.nasa.gov/planetary/apod?api_key=${apiNASA}`
-        const response = await fetch(urlNASA);
-        const data = await response.json();
-        console.log(data);
-        imgNASA.src = data.url;
-        explanation.classList.remove('hidden');
-        const option = document.querySelector('#option');
-        option.addEventListener('click', () => {
-            explanationPara.textContent = option.checked ? data.explanation
-            : 'Check the box above to learn more about this picture';
-        })          
-        const databaseButton = document.querySelector('#to-database');
-        databaseButton.classList.remove('hidden');
+            const urlNASA = `https://api.nasa.gov/planetary/apod?api_key=${apiNASA}`
+            const response = await fetch(urlNASA);
+            const data = await response.json();
+            console.log(data);
+            imgNASA.src = data.url;
+            explanation.classList.remove('hidden');
+            const option = document.querySelector('#option');
+            const databaseButton = document.querySelector('#to-database');
+            databaseButton.classList.remove('hidden');
+            option.addEventListener('click', () => {
+                explanationPara.textContent = option.checked ? data.explanation
+                : 'Check the box above to learn more about this picture';
+            })          
         }, 1500) 
     })
     const databaseButton = document.querySelector('#to-database');
