@@ -3,13 +3,10 @@ const nasaImages = document.querySelector('.nasa-images');
 const searchResultsNASA = document.querySelector('#nasa-search-results')
 const searchButton = document.querySelector('#search-btn');
 const backHomeButton = document.querySelector('#back-home');
-
-const x = document.getElementById("msg");
-
+const loc = document.querySelector('#location');
 
 const welcomeScreen = () => {
     const apiKey = '24bb21182ada6dcc2c538be1bb4be546'
-    const loc = document.querySelector('#location');
     const temp = document.querySelector('#temperature');
     const description = document.querySelector('#description');
     const icon = document.querySelector('#icon');
@@ -19,44 +16,54 @@ const welcomeScreen = () => {
             const lon = position.coords.longitude;
             const lat = position.coords.latitude;
             const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
-            const resp = await fetch(url);
-            console.log('resp:',resp)
-            const data = await resp.json()
-            console.log('data:', data)
-            loc.textContent = `Showing you the weather for ${data.name}`;
-            let temperature = data.main.temp;
-            temp.innerHTML = `Current Temp is: ${Math.floor(temperature)}<span>&#176;</span>C`;
-            description.textContent = data.weather[0].description;
-                temp.addEventListener('click', () => {
-                if (temperature === data.main.temp) {
-                    let fahrenheit = (temperature * (9 / 5) + 32) ;
-                    temp.innerHTML = `Current Temp is: ${Math.floor(fahrenheit)}<span>&#176;</span>F`;
-                    temperature = 0;
-                } else {
-                    temperature = data.main.temp
+            try {
+                const resp = await fetch(url);
+                const data = await resp.json()
+                console.log('resp:',resp)
+                console.log('data:', data);
+                if (resp.ok) {
+                    loc.textContent = `Showing you the weather for ${data.name}`;
+                    let temperature = data.main.temp;
                     temp.innerHTML = `Current Temp is: ${Math.floor(temperature)}<span>&#176;</span>C`;
+                    description.textContent = data.weather[0].description;
+                    temp.addEventListener('click', () => {
+                        if (temperature === data.main.temp) {
+                            let fahrenheit = (temperature * (9 / 5) + 32);
+                            temp.innerHTML = `Current Temp is: ${Math.floor(fahrenheit)}<span>&#176;</span>F`;
+                            temperature = 0;
+                        } else {
+                            temperature = data.main.temp
+                            temp.innerHTML = `Current Temp is: ${Math.floor(temperature)}<span>&#176;</span>C`;
+                        }
+                    })
+                    const weatherCondition = data.weather[0].main;
+                    icon.src = `public/image/${weatherCondition}.svg`;
+                } else if (!resp.ok) {
+                    loc.innerHTML = `Couldn't fetch the weather data! <br>
+                    ${data.message} `
                 }
-                })
-            const weatherCondition = data.weather[0].main;
-            icon.src = `public/image/${weatherCondition}.svg`;
-                    
-        }, showError);
+            } catch (error) {
+                loc.innerHTML = `Couldn't fetch the weather data! <br> 
+                ${error}`;
+            }
+        }, showLocationError);
     }
 }
 
-function showError(error) {
+function showLocationError(error) {
     switch (error.code) {
         case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
+            loc.innerHTML = `Why on Earth did you deny the location? &#128543<br>
+            I wanted to show you something cool`;
             break;
         case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
+            loc.innerHTML = "Location information is unavailable."
             break;
         case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
+            loc.innerHTML = "The request to get user location timed out."
             break;
         default:
-            x.innerHTML = "An unknown error occurred."
+            loc.innerHTML = "An unknown error occurred."
             break;
     }
 }
@@ -164,34 +171,3 @@ backHomeButton.addEventListener('click', () => {
 
 
 
-
-// ! UNUSED
-/*
-
-return new Promise((resolve, reject) => {
-    if (resp.ok) {
-        try {
-            resolve(console.log(data));
-        } catch (error) {
-            reject(error.message)
-        }
-    }
-});
-
-else { const locError = document.createElement('div');
-    const welcome = document.getElementById('welcome');
-    welcome.appendChild(locError);
-    locError.textContent = "I can't get your location";
-
-    let lat = 52.377956;
-    let lon = 4.897070;
-}
-
-// toggle the show explanation button
-function toggleHide(className) {
-    var element = document.querySelector(className);
-    element.classList.toggle("hidden");
-}    
-
-
-*/
