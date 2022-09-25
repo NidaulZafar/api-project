@@ -164,24 +164,8 @@ const queryNasa = async () => {
         console.log(data);
         if (resp.ok) {
             searchResultsNASA.textContent = '';
-            if (data.collection.items.length > 9) {
-                searchResultsNASA.innerHTML = `<h3>For your query we found ${data.collection.items.length} results.<br>
-                Here are the first 9 of them.`
-                for (let i = 0; i < 9; i++) {
-                    const imgSrc = data.collection.items[i]['links'][0].href;
-                    searchResultsNASA.innerHTML += `
-                        <article class='cards'>
-                        <div>
-                        <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
-                        </div>
-                        <div>
-                        <h3>${data.collection.items[i]['data'][0].title}</h3>
-                        <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
-                        <button id='cards${i}'>Get More Details</button>
-                        </div>
-                        </article>
-                    `;
-                }
+            if (data.collection.items.length === 0) {
+                searchResultsNASA.innerHTML = `<h1>Your search term didn't return anything from the database. Try something astronomical.<h1>`;
             } else if (data.collection.items.length < 9) {
                 searchResultsNASA.innerHTML = `<h3>For your query we found ${data.collection.items.length} results.`
                 for (let i = 0; i < data.collection.items.length; i++) {
@@ -200,7 +184,23 @@ const queryNasa = async () => {
                     `;
                 }
             } else {
-                searchResultsNASA.innerHTML = `<h1>Your search term didn't return anything from the database. Try something astronomical.<h1>`
+                searchResultsNASA.innerHTML = `<h3>For your query we found ${data.collection.items.length} results.<br>
+                Here are the first 9 of them.`
+                for (let i = 0; i < 9; i++) {
+                    const imgSrc = data.collection.items[i]['links'][0].href;
+                    searchResultsNASA.innerHTML += `
+                        <article class='cards'>
+                        <div>
+                        <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
+                        </div>
+                        <div>
+                        <h3>${data.collection.items[i]['data'][0].title}</h3>
+                        <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
+                        <button id='cards${i}'>Get More Details</button>
+                        </div>
+                        </article>
+                    `;
+                }
             }           
         }
     } catch (error) {
