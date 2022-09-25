@@ -167,7 +167,7 @@ const queryNasa = async () => {
             if (data.collection.items.length === 0) {
                 searchResultsNASA.innerHTML = `<h1>Your search term didn't return anything from the database. Try something astronomical.<h1>`;
             } else if (data.collection.items.length < 9) {
-                searchResultsNASA.innerHTML = `<h3>For your query we found ${data.collection.items.length} results.`
+                searchResultsNASA.innerHTML = `<h2>For your query we found ${data.collection.items.length} result(s).</h2>`
                 for (let i = 0; i < data.collection.items.length; i++) {
                     const imgSrc = data.collection.items[i]['links'][0].href;
                     searchResultsNASA.innerHTML += `
@@ -184,8 +184,8 @@ const queryNasa = async () => {
                     `;
                 }
             } else {
-                searchResultsNASA.innerHTML = `<h3>For your query we found ${data.collection.items.length} results.<br>
-                Here are the first 9 of them.`
+                searchResultsNASA.innerHTML = `<h2>For your query we found ${data.collection.items.length} results.
+                Here are the first 9 of them.</h2>`
                 for (let i = 0; i < 9; i++) {
                     const imgSrc = data.collection.items[i]['links'][0].href;
                     searchResultsNASA.innerHTML += `

@@ -193,6 +193,10 @@ h1, h2 {
   justify-content: center;
   
 }
+#nasa-search-results h2 {
+  flex-basis: 100%;
+  margin: 20px;
+}
 .cards {
   width: 33%;
   overflow: auto;
