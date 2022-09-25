@@ -72,9 +72,6 @@ function showLocationError(error) {
 
 window.addEventListener('load', welcomeScreen);
 
-
-
-
 //  On clicking and Entering the NASA screen Button
 nasaScreenButton.addEventListener('click', () => {
     const header = document.getElementById('header');
@@ -138,14 +135,12 @@ nasaScreenButton.addEventListener('click', () => {
                 }
             } catch (error) {
                 console.log('catch error:', error)
-                headingAPOD.textContent = error
+                headingAPOD.textContent = error.message;
             }
-                      
         }, 1500) 
     })
     const databaseButton = document.querySelector('#to-database');
     databaseButton.addEventListener('click', () => {
-        
         headingAPOD.classList.add('hidden');
         dataNASA.classList.add('hidden');
         imgNASA.classList.add('hidden');
@@ -169,23 +164,47 @@ const queryNasa = async () => {
         console.log(data);
         if (resp.ok) {
             searchResultsNASA.textContent = '';
-            for (let i = 0; i < 9; i++) {
-                const imgSrc = data.collection.items[i]['links'][0].href;
-                searchResultsNASA.innerHTML += `
-                    <article class='cards'>
-                    <div>
-                    <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
-                    </div>
-                    <div>
-                    <h3>${data.collection.items[i]['data'][0].title}</h3>
-                    <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
-                    <button id='cards${i}'>Get More Details</button>
-                    </div>
-                    </article>
-                `;
-            }
+            if (data.collection.items.length > 9) {
+                searchResultsNASA.innerHTML = `<h3>For your query we found ${data.collection.items.length} results.<br>
+                Here are the first 9 of them.`
+                for (let i = 0; i < 9; i++) {
+                    const imgSrc = data.collection.items[i]['links'][0].href;
+                    searchResultsNASA.innerHTML += `
+                        <article class='cards'>
+                        <div>
+                        <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
+                        </div>
+                        <div>
+                        <h3>${data.collection.items[i]['data'][0].title}</h3>
+                        <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
+                        <button id='cards${i}'>Get More Details</button>
+                        </div>
+                        </article>
+                    `;
+                }
+            } else if (data.collection.items.length < 9) {
+                searchResultsNASA.innerHTML = `<h3>For your query we found ${data.collection.items.length} results.`
+                for (let i = 0; i < data.collection.items.length; i++) {
+                    const imgSrc = data.collection.items[i]['links'][0].href;
+                    searchResultsNASA.innerHTML += `
+                        <article class='cards'>
+                        <div>
+                        <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
+                        </div>
+                        <div>
+                        <h3>${data.collection.items[i]['data'][0].title}</h3>
+                        <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
+                        <button id='cards${i}'>Get More Details</button>
+                        </div>
+                        </article>
+                    `;
+                }
+            } else {
+                searchResultsNASA.innerHTML = `<h1>Your search term didn't return anything from the database. Try something astronomical.<h1>`
+            }           
         }
     } catch (error) {
+        throw new Error(error.message)
         console.log('catch error', error)
     }
 }
@@ -196,6 +215,3 @@ backHomeButton.addEventListener('click', () => {
     header.classList.remove('hidden');
     searchResultsNASA.innerHTML = '';
 })
-
-
-
