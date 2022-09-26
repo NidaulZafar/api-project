@@ -14,8 +14,6 @@ export const welcomeScreen = () => {
             try {
                 const resp = await fetch(url);
                 const data = await resp.json()
-                console.log('resp:', resp)
-                console.log('data:', data);
                 if (resp.ok) {
                     loc.textContent = `Showing you the weather for ${data.name}`;
                     let temperature = data.main.temp;
@@ -33,15 +31,13 @@ export const welcomeScreen = () => {
                     })
                     const weatherCondition = data.weather[0].main;
                     icon.src = `public/image/${weatherCondition}.svg`;
-                } else if (!resp.ok) {
+                } else {
                     loc.innerHTML = `Couldn't fetch the weather data! <br>
-                    ${data.message} `
-                    console.log('else if fired')
+                    ${data.message}`
                 }
             } catch (error) {
                 loc.innerHTML = `Couldn't fetch the weather data! <br> 
                 ${error}`;
-                console.log('catch fired');
             }
         }, showLocationError, {timeout: 5000});
     }

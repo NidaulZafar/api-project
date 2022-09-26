@@ -42,8 +42,6 @@ export const pictureNASA = () => {
             try {
                 const response = await fetch(urlNASA);
                 const data = await response.json();
-                console.log(response);
-                console.log(data);
                 if (response.ok) {
                     headingAPOD.textContent = 'Checkout this Incredible Image from NASA';
                     imgNASA.src = data.url;
@@ -53,16 +51,16 @@ export const pictureNASA = () => {
                     databaseButton.classList.remove('hidden');
                     option.addEventListener('click', () => {
                         explanationPara.textContent = option.checked ? data.explanation
-                            : 'Check the box above to learn more about this picture';
+                        : 'Check the box above to learn more about this picture';
                     })
                 }
-                else if (!response.ok) {
+                else {
                     console.log('else if:', data.error.message)
                     headingAPOD.textContent = data.error.message;
                 }
             } catch (error) {
                 console.log('catch error:', error)
-                headingAPOD.textContent = error.message;
+                headingAPOD.innerHTML = `There was an error. ${error.message}`;
             }
         }, 1500)
     })
