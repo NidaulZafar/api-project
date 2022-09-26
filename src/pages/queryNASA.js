@@ -57,7 +57,7 @@ export const queryNasa = async () => {
             }           
         }
     } catch (error) {
-        throw new Error(error.message)
         console.log('catch error', error)
+        throw new Error(error.message)
     }
 }
