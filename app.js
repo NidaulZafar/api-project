@@ -3,12 +3,12 @@ import { pictureNASA } from "./src/pages/APODpage.js";
 import { queryNasa } from "./src/pages/queryNASA.js";
 
 
-const nasaScreenButton = document.querySelector('#nasa-screen-button');
 export const nasaImages = document.querySelector('.nasa-images');
 export const searchResultsNASA = document.querySelector('#nasa-search-results')
+export const loc = document.querySelector('#location');
+const nasaScreenButton = document.querySelector('#nasa-screen-button');
 const searchButton = document.querySelector('#search-btn');
 const backHomeButton = document.querySelector('#back-home');
-export const loc = document.querySelector('#location');
 
 
 window.addEventListener('load', welcomeScreen);
