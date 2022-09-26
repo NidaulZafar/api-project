@@ -47,7 +47,6 @@ export const welcomeScreen = () => {
     }
 }
 
-
 function showLocationError(error) {
     switch (error.code) {
         case error.PERMISSION_DENIED:
