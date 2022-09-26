@@ -1,4 +1,5 @@
 import { searchResultsNASA } from "../../app.js";
+import { searchResults } from "../views/nasa-query-view.js";
 
 export const queryNasa = async () => {
     const searchTerm = document.getElementById("search-input");
@@ -19,36 +20,14 @@ export const queryNasa = async () => {
                 searchResultsNASA.innerHTML = `<h2>For your query we found ${data.collection.items.length} result(s).</h2>`
                 for (let i = 0; i < data.collection.items.length; i++) {
                     const imgSrc = data.collection.items[i]['links'][0].href;
-                    searchResultsNASA.innerHTML += `
-                        <article class='cards'>
-                        <div>
-                        <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
-                        </div>
-                        <div>
-                        <h3>${data.collection.items[i]['data'][0].title}</h3>
-                        <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
-                        <button id='cards${i}'>Get More Details</button>
-                        </div>
-                        </article>
-                    `;
+                    searchResultsNASA.innerHTML += searchResults(imgSrc, data.collection.items[i]['data'][0].title, data.collection.items[i]['data'][0]['date_created'], i);
                 }
             } else {
                 searchResultsNASA.innerHTML = `<h2>For your query we found ${data.collection.items.length} results.
                 Here are the first 9 of them.</h2>`
                 for (let i = 0; i < 9; i++) {
                     const imgSrc = data.collection.items[i]['links'][0].href;
-                    searchResultsNASA.innerHTML += `
-                        <article class='cards'>
-                        <div>
-                        <a href='${imgSrc}' target=”_blank”><img class='imgsNASA' src='${imgSrc}'></a>
-                        </div>
-                        <div>
-                        <h3>${data.collection.items[i]['data'][0].title}</h3>
-                        <p>${(data.collection.items[i]['data'][0]['date_created']).slice(0, 10)}</p>
-                        <button id='cards${i}'>Get More Details</button>
-                        </div>
-                        </article>
-                    `;
+                    searchResultsNASA.innerHTML += searchResults(imgSrc, data.collection.items[i]['data'][0].title, data.collection.items[i]['data'][0]['date_created'], i);
                 }
             }           
         }
