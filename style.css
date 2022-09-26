@@ -20,10 +20,10 @@ display:block;
 overflow: scroll;
 }
 .stars {
-background:#000 url(./public/image/stars.png) repeat top center;
+background:#000 url(./images/stars.png) repeat top center;
 }
 .twinkling{
-background:transparent url(./public/image/twinkling.png) repeat top center;
+background:transparent url(./images/twinkling.png) repeat top center;
 animation: twinkle-effect 200s linear infinite;
 } 
 
