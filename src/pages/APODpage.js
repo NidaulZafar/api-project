@@ -57,9 +57,8 @@ export const pictureNASA = () => {
                     })
                 }
                 else if (!response.ok) {
-                    headingAPOD.textContent = data.error.message;
                     console.log('else if:', data.error.message)
-                    throw new Error(data);
+                    headingAPOD.textContent = data.error.message;
                 }
             } catch (error) {
                 console.log('catch error:', error)

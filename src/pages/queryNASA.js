@@ -1,9 +1,5 @@
 import { searchResultsNASA } from "../../app.js";
 
-
-
-
-
 export const queryNasa = async () => {
     const searchTerm = document.getElementById("search-input");
     const query = searchTerm.value;
@@ -57,7 +53,6 @@ export const queryNasa = async () => {
             }           
         }
     } catch (error) {
-        console.log('catch error', error)
-        throw new Error(error.message)
+        searchResultsNASA.innerHTML = `<h2>${error}. Make sure the url is valid.</h2>`;
     }
 }
