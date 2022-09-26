@@ -15,7 +15,6 @@ export const queryNasa = async () => {
         if (data.collection.items.length === 0) {
             searchResultsNASA.innerHTML = `<h1>Your search term didn't return anything from the database. Try something astronomical.<h1>`;
         } else if (data.collection.items.length < 9) {
-            console.log('render function')
             renderImages(searchResultsNASA, data)
         } else {
             renderImages(searchResultsNASA, data, 9)
