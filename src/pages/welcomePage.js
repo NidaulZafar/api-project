@@ -13,10 +13,11 @@ export const welcomeScreen = () => {
             const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
             try {
                 const resp = await fetch(url);
-                const data = await resp.json()
-                console.log('resp:', resp)
-                console.log('data:', data);
+                console.log('resp:', resp);
+                console.log('resp:', resp.ok);
                 if (resp.ok) {
+                    const data = await resp.json()
+                    console.log('data:', data);
                     loc.textContent = `Showing you the weather for ${data.name}`;
                     let temperature = data.main.temp;
                     temp.innerHTML = `Current Temp is: ${Math.floor(temperature)}<span>&#176;</span>C`;
@@ -33,10 +34,9 @@ export const welcomeScreen = () => {
                     })
                     const weatherCondition = data.weather[0].main;
                     icon.src = `public/image/${weatherCondition}.svg`;
-                } else if (!resp.ok) {
-                    loc.innerHTML = `Couldn't fetch the weather data! <br>
-                    ${data.message} `
+                } else {
                     console.log('else if fired')
+                    loc.innerHTML = `Couldn't fetch the weather data! <br>`
                 }
             } catch (error) {
                 loc.innerHTML = `Couldn't fetch the weather data! <br> 
@@ -46,6 +46,7 @@ export const welcomeScreen = () => {
         }, showLocationError, {timeout: 5000});
     }
 }
+
 
 function showLocationError(error) {
     switch (error.code) {
