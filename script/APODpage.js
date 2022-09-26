@@ -1,4 +1,4 @@
-import { nasaImages } from "../../app.js";
+import { nasaImages } from "./app.js";
 
 
 export const pictureNASA = () => {

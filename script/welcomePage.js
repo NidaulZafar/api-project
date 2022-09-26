@@ -1,4 +1,4 @@
-import { loc } from "../../app.js";
+import { loc } from "./app.js";
 
 export const welcomeScreen = () => {
     const apiKey = '24bb21182ada6dcc2c538be1bb4be546'
@@ -30,7 +30,7 @@ export const welcomeScreen = () => {
                         }
                     })
                     const weatherCondition = data.weather[0].main;
-                    icon.src = `public/image/${weatherCondition}.svg`;
+                    icon.src = `../images/${weatherCondition}.svg`;
                 } else {
                     loc.innerHTML = `Couldn't fetch the weather data! <br>
                     ${data.message}`
@@ -48,15 +48,15 @@ function showLocationError(error) {
         case error.PERMISSION_DENIED:
             loc.innerHTML = `Why on Earth did you deny the location? &#128543<br>
             I wanted to show you something cool`;
-            break;
+        break;
         case error.POSITION_UNAVAILABLE:
             loc.innerHTML = "Location information is unavailable."
-            break;
+        break;
         case error.TIMEOUT:
             loc.innerHTML = "The request to get user location timed out."
-            break;
+        break;
         default:
             loc.innerHTML = "An unknown error occurred."
-            break;
+        break;
     }
 }

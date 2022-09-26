@@ -1,5 +1,5 @@
-import { searchResultsNASA } from "../../app.js";
-import { searchResults } from "../views/nasa-query-view.js";
+import { searchResultsNASA } from "./app.js";
+import { searchResults } from "./views/nasa-query-view.js";
 import { requestData } from "./fetch.js";
 
 

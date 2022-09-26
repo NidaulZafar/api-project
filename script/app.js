@@ -1,6 +1,6 @@
-import { welcomeScreen } from "./src/pages/welcomePage.js";
-import { pictureNASA } from "./src/pages/APODpage.js";
-import { queryNasa } from "./src/pages/queryNASA.js";
+import { welcomeScreen } from "./welcomePage.js";
+import { pictureNASA } from "./APODpage.js";
+import { queryNasa } from "./queryNASA.js";
 
 
 export const nasaImages = document.querySelector('.nasa-images');

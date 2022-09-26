@@ -10,5 +10,5 @@ export const searchResults = (img, dataTitle, date, i) => {
     <button id='cards${i}'>Get More Details</button>
     </div>
     </article>
-`
+    `
 }
