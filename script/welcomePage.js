@@ -36,7 +36,7 @@ export const welcomeScreen = () => {
                     ${data.message}`
                 }
             } catch (error) {
-                loc.innerHTML = `Couldn't fetch the weather data! <br> 
+                loc.innerHTML = `Sorry! There is something wrong. <br> 
                 ${error}`;
             }
         }, showLocationError, {timeout: 5000});
