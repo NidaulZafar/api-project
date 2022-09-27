@@ -51,8 +51,13 @@
                 <h1 id="apod-heading"></h1>
                 <img id="apod" src="" alt="" />
                 <div class="explanation">
-                  <input type="checkbox" id="option" name="option" />
-                  <label for="option">Show Explanation</label>
+                  <label for="option" class="toggler-wrapper">
+                    <input type="checkbox" id="option" />
+                    <div class="toggler-slider">
+                      <div class="toggler-knob"></div>
+                    </div>
+                  </label>
+                  <div class="badge">Show Explanation</div>
                 </div>
                 <p class="explanation-p hidden"></p>
               </div>
@@ -75,8 +80,13 @@
                 </button>
               </div>
               <div class="search-options">
-                <input type="checkbox" id="search-option1" name="option1" />
-                <label for="search-option1">Include Videos</label>
+                <label class="toggler-wrapper">
+                  <input type="checkbox" id="search-option1" />
+                  <div class="toggler-slider">
+                    <div class="toggler-knob"></div>
+                  </div>
+                </label>
+                <div class="badge">Include Videos</div>
               </div>
               <div id="nasa-search-results"></div>
               <button id="back-home">

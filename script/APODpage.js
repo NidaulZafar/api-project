@@ -30,7 +30,7 @@ export const pictureNASA = () => {
     const headingAPOD = document.querySelector('#apod-heading');
     explanation.classList.add('hidden');
     yesButton.addEventListener('click', async () => {
-        headingAPOD.textContent = ''
+        headingAPOD.innerHTML = ''
         reaction.classList.remove('hidden');
         reaction.innerHTML = `<p>Let me fetch a cool picture from NASA</p>`;
         setTimeout(async () => {
@@ -48,10 +48,11 @@ export const pictureNASA = () => {
                 if (response.ok) {
                     if (data['media_type'] === 'video') {
                         headingAPOD.classList.remove('hidden');
-                        headingAPOD.textContent = 'Sorry. Today its a video day. Come back tomorrow.'
+                        headingAPOD.innerHTML = `Mostly its an image and rarely a video. Today is one of those rare days.
+                        <a href="${data.url}">Click here</a> to watch the video on Youtube.`
                         databaseButton.classList.remove('hidden');
                     } else {                        
-                        headingAPOD.textContent = 'Checkout this Incredible Image from NASA';
+                        headingAPOD.innerHTML = 'Checkout this Incredible Image from NASA';
                         imgNASA.src = data.url;
                         explanation.classList.remove('hidden');
                         const option = document.querySelector('#option');
