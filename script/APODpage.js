@@ -1,4 +1,5 @@
 import { nasaImages } from "./app.js";
+export const main = document.querySelector('main');
 
 
 export const pictureNASA = () => {
@@ -10,6 +11,7 @@ export const pictureNASA = () => {
     const reaction = document.querySelector('.reaction');
     header.classList.add('hidden');
     mainScreen.classList.remove('hidden');
+    main.classList.remove('hidden');
     astronomyQuestion.classList.remove('hidden');
     noButton.addEventListener('click', () => {
         reaction.classList.remove('hidden');
@@ -28,6 +30,7 @@ export const pictureNASA = () => {
     const headingAPOD = document.querySelector('#apod-heading');
     explanation.classList.add('hidden');
     yesButton.addEventListener('click', async () => {
+        headingAPOD.textContent = ''
         reaction.classList.remove('hidden');
         reaction.innerHTML = `<p>Let me fetch a cool picture from NASA</p>`;
         setTimeout(async () => {
@@ -43,16 +46,22 @@ export const pictureNASA = () => {
                 const response = await fetch(urlNASA);
                 const data = await response.json();
                 if (response.ok) {
-                    headingAPOD.textContent = 'Checkout this Incredible Image from NASA';
-                    imgNASA.src = data.url;
-                    explanation.classList.remove('hidden');
-                    const option = document.querySelector('#option');
-                    const databaseButton = document.querySelector('#to-database');
-                    databaseButton.classList.remove('hidden');
-                    option.addEventListener('click', () => {
-                        explanationPara.textContent = option.checked ? data.explanation
-                        : 'Check the box above to learn more about this picture';
-                    })
+                    if (data['media_type'] === 'video') {
+                        headingAPOD.classList.remove('hidden');
+                        headingAPOD.textContent = 'Sorry. Today its a video day. Come back tomorrow.'
+                        databaseButton.classList.remove('hidden');
+                    } else {                        
+                        headingAPOD.textContent = 'Checkout this Incredible Image from NASA';
+                        imgNASA.src = data.url;
+                        explanation.classList.remove('hidden');
+                        const option = document.querySelector('#option');
+                        const databaseButton = document.querySelector('#to-database');
+                        databaseButton.classList.remove('hidden');
+                        option.addEventListener('click', () => {
+                            explanationPara.textContent = option.checked ? data.explanation
+                            : 'Check the box above to learn more about this picture';
+                        })
+                    }
                 }
                 else {
                     console.log('else fired');

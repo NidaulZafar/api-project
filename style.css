@@ -98,6 +98,10 @@ h1, h2 {
   margin-top: -25px;
 }
 
+main {
+  min-width: 50%;
+  max-width: 100%;
+}
 /* NASA APOD screen starts here */
 #astronomy-question {
   margin-top: 30vh;
@@ -137,12 +141,8 @@ h1, h2 {
 .search-box {
   display: flex;
   align-items: stretch;
-  width: 30vw;
   margin: 0px auto;
-}
-.search-query,
-#search-btn {
-  width: 100%;
+  justify-content: center;
 }
 .search-query {
   padding: 0 1rem;
@@ -154,6 +154,9 @@ h1, h2 {
   border-color: purple;
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
+  min-width: 60%;
+  max-width: 100%;
+
 }
 #search-btn {
   border-radius: 0;

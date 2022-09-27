@@ -1,6 +1,7 @@
 import { welcomeScreen } from "./welcomePage.js";
 import { pictureNASA } from "./APODpage.js";
 import { queryNasa } from "./queryNASA.js";
+import { main } from "./APODpage.js";
 
 
 export const nasaImages = document.querySelector('.nasa-images');
@@ -22,4 +23,5 @@ backHomeButton.addEventListener('click', () => {
     nasaImages.classList.add('hidden');
     header.classList.remove('hidden');
     searchResultsNASA.innerHTML = '';
+    main.classList.add('hidden');
 })
