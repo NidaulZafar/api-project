@@ -5,12 +5,13 @@ export const welcomeScreen = () => {
     const temp = document.querySelector('#temperature');
     const description = document.querySelector('#description');
     const icon = document.querySelector('#icon');
+    loc.textContent = `Let me fetch the weather data for you!`;
     
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async position => {
             const lon = position.coords.longitude;
             const lat = position.coords.latitude;
-            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
             try {
                 const resp = await fetch(url);
                 const data = await resp.json()
