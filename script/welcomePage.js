@@ -30,7 +30,7 @@ export const welcomeScreen = () => {
                         }
                     })
                     const weatherCondition = data.weather[0].main;
-                    icon.src = `../images/${weatherCondition}.svg`;
+                    icon.src = `./images/${weatherCondition}.svg`;
                 } else {
                     loc.innerHTML = `Couldn't fetch the weather data! <br>
                     ${data.message}`
