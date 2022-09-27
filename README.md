@@ -58,8 +58,9 @@ Don't forget to give the project a star! Thanks again!
 ## Contact
 
 Nida ul Zafar <br>
-[<img src="https://img.shields.io/badge/-instagram-1282e8?logo=instagram" height="30" alt="JavaScript">](https://instagram.com/ahmadhunny) 
-[<img src="https://img.shields.io/badge/-Gmail-1282e8?logo=gmail" height="30" alt="JavaScript">](mailto:nidaulzafar@gmail.com)
+[<img src="https://img.shields.io/badge/-instagram-1282e8?logo=instagram" height="30" alt="Instagram">](https://instagram.com/ahmadhunny) 
+[<img src="https://img.shields.io/badge/-Gmail-1282e8?logo=gmail" height="30" alt="Gmail">](mailto:nidaulzafar@gmail.com)
+[<img src="https://img.shields.io/badge/-github-000?logo=github" height="30" alt="Github">](https://github.com/nidaulzafar)
 
 
 ## Acknowledgments
