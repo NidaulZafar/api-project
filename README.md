@@ -77,6 +77,7 @@ I would like to express my deepest appreciation to a number of people and resour
 * [NASA](https://www.nasa.gov/) For their APIs to display an astonishing Picture of the Day and the Image database.
 * [Carla Codes](https://github.com/Carla-Codes) For the wonderful stars twinkling animation I have used for the background.
 * [GetCSSScans](https://getcssscan.com/css-buttons-examples) For the beautiful button design.
+* [Bas Milius](https://bas.dev/) For the incredible animated icons for weather conditions.
 * [Alvaro](https://alvarotrigo.com/blog/css-checkbox-styles/) For the cool checkbox button.
 * [Othneil Drew](https://github.com/othneildrew) For his carefully designed readme template that helped me design mine.
 * [Shields](https://shields.io/) For their easy to design badges that I have used above.
