@@ -13,7 +13,7 @@ I designed this web app for my project during the Using APIs module at HackYourF
 The web version of this project can be seen [here](https://nidaulzafar.github.io/api-project/).
 
 <div align="center">
-<img src="images/WelcomeScreen.png" width="600" height="400" alt="WelcomeScreen">
+<img src="images/welcomeScreen.gif" width="600" height="400" alt="WelcomeScreen">
 </div>
 
 
