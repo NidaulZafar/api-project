@@ -36,6 +36,8 @@ The app was built using the knowledge gained by studying different modules of HT
 
 ## Roadmap
 
+This is a basic app that fulfills the requirements for the assignment at HackYourFuture. But I intend to keep improving upon it with the following roadmap. 
+
 - [x] Responsive app
 - [x] Use atleast one API to fetch data
 - [x] Loading/error handling for the interaction with the API
