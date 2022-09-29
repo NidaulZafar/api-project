@@ -8,7 +8,7 @@ export const queryNasa = async () => {
     const query = searchTerm.value;
     const baseUrl = `https://images-api.nasa.gov/search?q=${query}&media_type=image`;
     const videoOption = document.querySelector('#search-option1');
-    let urlNASA = videoOption.checked ? `${baseUrl},video` : baseUrl;
+    const urlNASA = videoOption.checked ? `${baseUrl},video` : baseUrl;
     try {
         const data = await requestData(urlNASA);
         searchResultsNASA.textContent = '';

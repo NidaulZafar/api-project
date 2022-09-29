@@ -22,7 +22,7 @@ export const welcomeScreen = () => {
                     description.textContent = data.weather[0].description;
                     temp.addEventListener('click', () => {
                         if (temperature === data.main.temp) {
-                            let fahrenheit = (temperature * (9 / 5) + 32);
+                            const fahrenheit = (temperature * (9 / 5) + 32);
                             temp.innerHTML = `Current Temp is: ${Math.floor(fahrenheit)}<span>&#176;</span>F`;
                             temperature = 0;
                         } else {
